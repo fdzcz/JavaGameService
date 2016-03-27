@@ -9,7 +9,7 @@ public class DispatchEventHandler implements EventHandler<DispatchEvent> {
 	@Override
 	public void onEvent(DispatchEvent dispatchEvent, long sequence, boolean endOfBatch)
 			throws Exception {
-		//´¦Àí
+		//å¤„ç†è¯·æ±‚
 		GameMsgEntity msg = dispatchEvent.getMsgEntity();
 		
 		switch(msg.getMsgCode()) {

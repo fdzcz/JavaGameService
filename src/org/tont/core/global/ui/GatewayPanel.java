@@ -16,7 +16,7 @@ public class GatewayPanel extends JPanel {
 	
 	public GatewayPanel() {
 		
-		//ÉèÖÃ²¼¾Ö
+		//é¢æ¿å¸ƒå±€
 		gridBagLayout = new GridBagLayout();
         gridBagLayout.columnWidths = new int[] { 0, 0};
         gridBagLayout.rowHeights = new int[] { 0 };
@@ -25,7 +25,7 @@ public class GatewayPanel extends JPanel {
         this.setLayout(gridBagLayout);
         
         
-        //Ìí¼Ó¿Ø¼ş
+        //å­é¢æ¿
         {
         	hardwarePanel = new HardwarePanel();
         	hardwarePanel.setPreferredSize(new Dimension(430, 480));

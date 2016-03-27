@@ -8,7 +8,7 @@ import org.tont.proto.GameMsgEntity;
 
 public class MarketServerHandler extends ChannelInboundHandlerAdapter {
 	
-	private final String CLOSE = "Ô¶³ÌÖ÷»úÇ¿ÆÈ¹Ø±ÕÁËÒ»¸öÏÖÓĞµÄÁ¬½Ó¡£";
+	private final String CLOSE = "";
 	
 	@Override
 	public void channelActive(ChannelHandlerContext ctx) throws Exception {
@@ -37,7 +37,7 @@ public class MarketServerHandler extends ChannelInboundHandlerAdapter {
 	public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause)
 			throws Exception {
 		if (cause.getMessage().equals(CLOSE)) {
-			System.out.println("Íø¹Ø·şÎñÆ÷ " + ctx.channel().remoteAddress() + " ¶Ï¿ªÁËÁ¬½Ó");
+			System.out.println("ç½‘å…³æœåŠ¡å™¨ " + ctx.channel().remoteAddress() + " æ–­å¼€äº†è¿æ¥");
 		}
 	}
 	

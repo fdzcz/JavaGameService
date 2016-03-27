@@ -38,26 +38,25 @@ public class ServerInfoGatherer {
 		
 	}
 	
-	//Ôö¼Ó¼ÆÊı
+	//å¢åŠ å¤„ç†è¯·æ±‚çš„è®¡æ•°
 	public void handleRequest() {
 		handleTotalNum.incrementAndGet();
 	}
 	
-	//»ñÈ¡µ±Ç°´¦ÀíËÙ¶È
 	public long getCurrentSpeedPerSecond() {
 		return currentSpeedPerSecond;
 	}
 	
-	//Æô¶¯Êı¾İ·ÖÎö¶¨Ê±ÈÎÎñ
+	//å¯åŠ¨æ•°æ®æ”¶é›†å®šæ—¶å™¨
 	public void startDataAnalyse() {
-		timer.schedule(dataAnalyse, 3000, analysePeriod);	//ÑÓÊ±3Ãë
+		timer.schedule(dataAnalyse, 3000, analysePeriod);	//ï¿½ï¿½Ê±3ï¿½ï¿½
 	}
 	
-	//Êä³öÈÕÖ¾
+	//è¾“å‡ºæ—¥å¿—
 	protected void Log() {
 		System.out.println("************************");
 		System.out.println(format.format(new Date())
-			+ "  µ±Ç°·şÎñÆ÷´¦ÀíÇëÇóËÙ¶È £º"+getCurrentSpeedPerSecond()+" ¸öÇëÇó/Ãë");
+			+ " å½“å‰æœåŠ¡å™¨å¤„ç†è¯·æ±‚é€Ÿåº¦"+getCurrentSpeedPerSecond()+" ä¸ªè¯·æ±‚/æ¯ç§’");
 	}
 	
 	//Getter and Setter

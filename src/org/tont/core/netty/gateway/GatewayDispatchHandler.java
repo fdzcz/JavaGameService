@@ -12,7 +12,7 @@ import org.tont.proto.GameMsgEntity;
 
 public class GatewayDispatchHandler extends ChannelInboundHandlerAdapter {
 	
-	private final String CLOSE = "Ô¶³ÌÖ÷»úÇ¿ÆÈ¹Ø±ÕÁËÒ»¸öÏÖÓĞµÄÁ¬½Ó¡£";
+	private final String CLOSE = "";
 	private final String MARKET = "MarketServerChannel";
 	private SessionPoolImp sessionPool;
 	
@@ -33,10 +33,10 @@ public class GatewayDispatchHandler extends ChannelInboundHandlerAdapter {
 		GameMsgEntity msgEntity = (GameMsgEntity) msg;
 		msgEntity.setChannel(ctx.channel());
 		switch (msgEntity.getMsgCode()) {
-			case 100:	//×¢²áÓëµÇÂ¼µÈ
+			case 100:	//æ³¨å†Œç™»å½•ç­‰ç›´æ¥ç”±ç½‘å…³å¤„ç†çš„è¯·æ±‚
 				Gateway.Dispatcher().onData(msgEntity);
 				break;
-			case 200:	//½»Ò×µÈ
+			case 200:	//å¸‚åœºäº¤æ˜“è¯·æ±‚
 				Gateway.Gatherer().handleRequest();
 				ServerChannelManager.getChannel(MARKET).writeAndFlush(msgEntity);
 				break;
@@ -49,7 +49,7 @@ public class GatewayDispatchHandler extends ChannelInboundHandlerAdapter {
 	public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause)
 			throws Exception {
 		if (cause.getMessage().equals(CLOSE)) {
-			System.out.println("Íæ¼Ò " + ctx.channel().remoteAddress() + "¶Ï¿ªÁËÁ¬½Ó");
+			System.out.println("ç©å®¶ " + ctx.channel().remoteAddress() + "æ–­å¼€äº†è¿æ¥");
 		}
 	}
 	
@@ -59,7 +59,7 @@ public class GatewayDispatchHandler extends ChannelInboundHandlerAdapter {
 		if (IdleStateEvent.class.isAssignableFrom(evt.getClass())) {
 			IdleStateEvent event = (IdleStateEvent) evt;
 			if (event.state() == IdleState.READER_IDLE || event.state() == IdleState.WRITER_IDLE || event.state() == IdleState.ALL_IDLE) {
-				System.out.println("Íæ¼Ò " + ctx.channel().remoteAddress() + " read/write idle");
+				System.out.println("ç©å®¶ " + ctx.channel().remoteAddress() + " read/write idle");
 				ctx.close();
 			}
 		}

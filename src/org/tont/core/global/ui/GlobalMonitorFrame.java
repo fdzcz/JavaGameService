@@ -28,25 +28,25 @@ public class GlobalMonitorFrame extends JFrame {
 		
 		tabbed = new JTabbedPane(JTabbedPane.TOP);
 		gatewayPanel = new GatewayPanel();
-		tabbed.add("  Íø¹Ø   ", gatewayPanel);
+		tabbed.add(" ç½‘å…³æœåŠ¡å™¨ ", gatewayPanel);
 		
 		JPanel view = new JPanel();
 		view.setBorder(new EmptyBorder(10, 0, 0, 0));
 		view.add(tabbed);
 		this.add(view);
 		
-		//´°¿ÚÉèÖÃ
+		//è®¾ç½®çª—å£å±æ€§
 		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		this.setSize(960, 600);
 		this.setInitPosition_Center();
 		this.setResizable(false);
 		this.setVisible(true);
 		
-		//Æô¶¯¼àÌıÏß³Ì
+		//å¯åŠ¨ç›‘å¬çº¿ç¨‹
 		this.startListener();
 	}
 	
-	//³õÊ¼»¯´°¿ÚµÄ³õÊ¼Î»ÖÃ£¬ÉèÎªÆÁÄ»ÖĞĞÄ
+	//è®¾ç½®åˆå§‹åæ ‡ä¸ºå±å¹•æ­£ä¸­å¿ƒ
 	public void setInitPosition_Center() {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		Dimension frameSize = this.getSize();

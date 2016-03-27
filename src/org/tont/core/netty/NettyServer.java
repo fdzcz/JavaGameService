@@ -32,7 +32,7 @@ public class NettyServer implements Runnable {
 	
 	public NettyServer(String configPath, ChannelInitializer<SocketChannel> initializer) throws ConfigParseException {
 		config = new Configuration(configPath);
-		System.out.println("ÒÑ´Ó "+configPath+" ³É¹¦¼ÓÔØÅäÖÃÎÄ¼ş");
+		System.out.println("æˆåŠŸä» "+configPath+" åŠ è½½é…ç½®æ–‡ä»¶");
 		this.initializer = initializer;
 	}
 	

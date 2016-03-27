@@ -13,15 +13,15 @@ public class RevMsgDecoder extends LengthFieldBasedFrameDecoder{
 	/**
 	 * @param byteOrder
 	 * @param maxFrameLength
-	 *            ×Ö½Ú×î´ó³¤¶È,´óÓÚ´Ë³¤¶ÈÔòÅ×³öÒì³£
+	 *            å­—èŠ‚æœ€å¤§é•¿åº¦,å¤§äºæ­¤é•¿åº¦åˆ™æŠ›å‡ºå¼‚å¸¸
 	 * @param lengthFieldOffset
-	 *            ¿ªÊ¼¼ÆËã³¤¶ÈÎ»ÖÃ,ÕâÀïÊ¹ÓÃ0´ú±í·ÅÖÃµ½×î¿ªÊ¼
+	 *            å¼€å§‹è®¡ç®—é•¿åº¦ä½ç½®,è¿™é‡Œä½¿ç”¨0ä»£è¡¨æ”¾ç½®åˆ°æœ€å¼€å§‹
 	 * @param lengthFieldLength
-	 *            ÃèÊö³¤¶ÈËùÓÃ×Ö½ÚÊı
+	 *            æè¿°é•¿åº¦æ‰€ç”¨å­—èŠ‚æ•°
 	 * @param lengthAdjustment
-	 *            ³¤¶È²¹³¥,ÕâÀïÓÉÓÚÃüÁîÂëÊ¹ÓÃ2¸ö×Ö½Ú.ĞèÒª½«Ô­À´³¤¶È¼ÆËã¼Ó2
+	 *            é•¿åº¦è¡¥å¿,è¿™é‡Œç”±äºå‘½ä»¤ç ä½¿ç”¨2ä¸ªå­—èŠ‚.éœ€è¦å°†åŸæ¥é•¿åº¦è®¡ç®—åŠ 2
 	 * @param initialBytesToStrip
-	 *            ¿ªÊ¼¼ÆËã³¤¶ÈĞèÒªÌø¹ıµÄ×Ö½ÚÊı
+	 *            å¼€å§‹è®¡ç®—é•¿åº¦éœ€è¦è·³è¿‡çš„å­—èŠ‚æ•°
 	 * @param failFast
 	 */
 	public RevMsgDecoder(ByteOrder byteOrder, int maxFrameLength,
@@ -36,7 +36,7 @@ public class RevMsgDecoder extends LengthFieldBasedFrameDecoder{
 	}
 	
 	/**
-	 * ¸ù¾İ¹¹Ôì·½·¨×Ô¶¯´¦ÀíÕ³°ü,°ë°ü.È»ºóµ÷ÓÃ´Ëdecode
+	 * æ ¹æ®æ„é€ æ–¹æ³•è‡ªåŠ¨å¤„ç†ç²˜åŒ…,åŠåŒ….ç„¶åè°ƒç”¨æ­¤decode
 	 * */
 	@Override
 	protected Object decode(ChannelHandlerContext ctx, ByteBuf byteBuf) throws Exception {
@@ -46,17 +46,17 @@ public class RevMsgDecoder extends LengthFieldBasedFrameDecoder{
 			return null;
 		}
 
-		short msgCode = frame.readShort();// ÏÈ¶ÁÈ¡Á½¸ö×Ö½ÚÃüÁîÂë
+		short msgCode = frame.readShort();// å…ˆè¯»å–ä¸¤ä¸ªå­—èŠ‚å‘½ä»¤ç 
 		
 		GameMsgEntity msg = new GameMsgEntity();
-		if (msgCode > 200) {	//½ØÈ¡pidºÍtoken
+		if (msgCode > 200) {	// è·å–Pidå’ŒToken
 			int pid = frame.readInt();
 			String token = frame.readBytes(64).toString();
 			msg.setPid(pid);
 			msg.setToken(token);
 		}
 		
-		byte[] data = new byte[frame.readableBytes()];// ÆäËüÊı¾İÎªÊµ¼ÊÊı¾İ
+		byte[] data = new byte[frame.readableBytes()];// å…¶å®ƒæ•°æ®ä¸ºå®é™…æ•°æ®
 		frame.readBytes(data);
 		
 		msg.setMsgCode(msgCode);

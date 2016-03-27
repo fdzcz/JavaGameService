@@ -25,7 +25,7 @@ public class BaseServerConnector implements Runnable {
 		this.handler = handler;
 	}
 	
-	public void connect() throws Exception {
+	public void connect() throws InterruptedException {
 		EventLoopGroup group = new NioEventLoopGroup();
 		try {
 			Bootstrap boot = new Bootstrap();
@@ -56,8 +56,7 @@ public class BaseServerConnector implements Runnable {
 	public void run() {
 		try {
 			this.connect();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
+		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 	}

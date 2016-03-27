@@ -43,7 +43,7 @@ public class UIStyleMgr {
         UIManager.put("OptionPane.messageFont", normalFont);
         UIManager.put("OptionPane.buttonFont", normalFont);
         
-        //使用Windows风格的样式
+        //浣跨敤Windows椋庢牸鐣岄潰
         String lookAndFeel = "com.sun.java.swing.plaf.windows.WindowsLookAndFeel";
         try {
 			UIManager.setLookAndFeel(lookAndFeel);

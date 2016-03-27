@@ -5,7 +5,7 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 
 public class GlobalServerHandler extends ChannelInboundHandlerAdapter {
 	
-	private final String CLOSE = "Ô¶³ÌÖ÷»úÇ¿ÆÈ¹Ø±ÕÁËÒ»¸öÏÖÓĞµÄÁ¬½Ó¡£";
+	private final String CLOSE = "";
 
 	@Override
 	public void channelActive(ChannelHandlerContext ctx) throws Exception {
@@ -22,7 +22,7 @@ public class GlobalServerHandler extends ChannelInboundHandlerAdapter {
 	public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause)
 			throws Exception {
 		if (cause.getMessage().equals(CLOSE)) {
-			System.out.println("Íæ¼Ò " + ctx.channel().remoteAddress() + "¶Ï¿ªÁËÁ¬½Ó");
+			System.out.println("æœåŠ¡å™¨ " + ctx.channel().remoteAddress() + "æ–­å¼€äº†è¿æ¥");
 		}
 	}
 }

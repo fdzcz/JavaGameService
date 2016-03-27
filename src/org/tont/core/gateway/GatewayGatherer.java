@@ -15,8 +15,8 @@ public class GatewayGatherer extends ServerInfoGatherer {
 	protected void Log() {
 		System.out.println("************************");
 		System.out.println(format.format(new Date())
-			+ "  µ±Ç°·şÎñÆ÷´¦ÀíÇëÇóËÙ¶È £º"+getCurrentSpeedPerSecond()+" ¸öÇëÇó/Ãë\n"
-			+ "Ò»¹²´¦Àí"+handleLoginNum.get()+"´ÎµÇÂ¼ÇëÇó");
+			+ " å½“å‰ç½‘å…³æœåŠ¡å™¨å¤„ç†è¯·æ±‚é€Ÿåº¦"+getCurrentSpeedPerSecond()+" ä¸ªè¯·æ±‚/æ¯ç§’\n"
+			+"å…¶ä¸­ç™»å½•è¯·æ±‚"+handleLoginNum.get()+"ä¸ª");
 	}
 	
 	@Override

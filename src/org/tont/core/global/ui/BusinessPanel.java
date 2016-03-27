@@ -15,7 +15,7 @@ public class BusinessPanel extends JPanel{
 
 	public BusinessPanel() {
 		
-		//ÉèÖÃ²¼¾Ö
+		//é¢æ¿å¸ƒå±€
 		GridBagLayout gridBagLayout = new GridBagLayout();
         gridBagLayout.columnWidths = new int[] { 0 };
         gridBagLayout.rowHeights = new int[] { 0, 0 };
@@ -23,9 +23,9 @@ public class BusinessPanel extends JPanel{
         gridBagLayout.rowWeights = new double[] { 0.0, 1.0E-4 };
         this.setLayout(gridBagLayout);
         
-        //Ìí¼Ó¿Ø¼ş
+        //å­é¢æ¿
         {
-        	info = new HardwareInfoChildPanel("ÒµÎñĞÅÏ¢");
+        	info = new HardwareInfoChildPanel("ä¸šåŠ¡ä¿¡æ¯");
         	info.setPreferredSize(new Dimension(410, 220));
             GridBagConstraints constraints = new GridBagConstraints();
             constraints.fill = GridBagConstraints.BOTH;
@@ -35,7 +35,7 @@ public class BusinessPanel extends JPanel{
             add(info, constraints);
         }
         {
-        	logger = new LogChildPanel("ÒµÎñÈÕÖ¾");
+        	logger = new LogChildPanel("ä¸šåŠ¡æ—¥å¿—");
         	logger.setPreferredSize(new Dimension(410, 220));
             GridBagConstraints constraints = new GridBagConstraints();
             constraints.fill = GridBagConstraints.BOTH;

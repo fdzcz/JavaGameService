@@ -20,11 +20,11 @@ public class LogChildPanel extends JPanel {
 		this.setLayout(bagLayout);
 		
 		logWin = new JTextArea();
-		logWin.setBackground(new Color(0x404040));
-		logWin.setForeground(new Color(0x00FF00));
+		logWin.setBackground(new Color(0x303030));
+		logWin.setForeground(new Color(0x00EE00));
 		logWin.setLineWrap(true);
 		logWin.setEditable(false);
-		logWin.setText("初始化日志窗口完成！\n");
+		logWin.setText("鏃ュ織绐楀彛鍒濆鍖栧畬鎴怽n");
 		this.setBorder(BorderFactory.createTitledBorder(title));
 		JScrollPane scroll = new JScrollPane(logWin);
 		

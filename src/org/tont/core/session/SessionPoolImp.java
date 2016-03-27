@@ -6,7 +6,7 @@ public class SessionPoolImp implements SessionPool {
 	
 	private final int count = 1000000;
 	private SessionEntity [] sessions = new SessionEntity[count];
-	private final int timeout = 300*1000;	//ºÁÃë
+	private final int timeout = 300*1000;	//å•ä½ä¸ºæ¯«ç§’
 	
 	public SessionEntity findSession(int pid) {
 		return sessions[pid];

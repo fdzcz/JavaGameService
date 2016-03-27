@@ -12,7 +12,7 @@ public class MarketConnectionHandler extends ChannelInboundHandlerAdapter {
 	@Override
 	public void channelActive(ChannelHandlerContext ctx) throws Exception {
 		ServerChannelManager.putChannel("MarketServerChannel", ctx.channel());
-		System.out.println("已与市场服务器建立连接");
+		System.out.println("鎴愬姛杩炴帴鑷冲競鍦轰氦鏄撴湇鍔″櫒");
 	}
 	
 	@Override

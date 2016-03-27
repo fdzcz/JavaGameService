@@ -15,7 +15,7 @@ public class HardwarePanel extends JPanel {
 
 	public HardwarePanel() {
 		
-		//ÉèÖÃ²¼¾Ö
+		//é¢æ¿å¸ƒå±€
 		GridBagLayout gridBagLayout = new GridBagLayout();
         gridBagLayout.columnWidths = new int[] { 0 };
         gridBagLayout.rowHeights = new int[] { 0, 0 };
@@ -23,9 +23,9 @@ public class HardwarePanel extends JPanel {
         gridBagLayout.rowWeights = new double[] { 0.0, 1.0E-4 };
         this.setLayout(gridBagLayout);
         
-        //Ìí¼Ó¿Ø¼ş
+        //å­é¢æ¿
         {
-        	info = new HardwareInfoChildPanel("Ó²¼şĞÅÏ¢");
+        	info = new HardwareInfoChildPanel("ç¡¬ä»¶ä¿¡æ¯");
         	info.setPreferredSize(new Dimension(410, 220));
             GridBagConstraints constraints = new GridBagConstraints();
             constraints.fill = GridBagConstraints.BOTH;
@@ -35,7 +35,7 @@ public class HardwarePanel extends JPanel {
             add(info, constraints);
         }
         {
-        	logger = new LogChildPanel("Ó²¼şÈÕÖ¾");
+        	logger = new LogChildPanel("ç¡¬ä»¶æ—¥å¿—");
         	logger.setPreferredSize(new Dimension(410, 220));
             GridBagConstraints constraints = new GridBagConstraints();
             constraints.fill = GridBagConstraints.BOTH;

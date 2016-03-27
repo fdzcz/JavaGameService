@@ -16,7 +16,7 @@ public class MessageDispatcher {
 	private RingBuffer<DispatchEvent> ringBuffer;
 	private EventFactory<DispatchEvent> eventFactory;
 	private ExecutorService executor;
-	private int ringBufferSize; // RingBuffer ´óĞ¡£¬±ØĞëÊÇ 2 µÄ N ´Î·½£»
+	private int ringBufferSize; //RingBufferçš„æ•°ç»„å¤§å°
 	private Disruptor<DispatchEvent> disruptor;
 	private EventHandler<DispatchEvent> eventHandler;
 	private WaitStrategy strategy;
