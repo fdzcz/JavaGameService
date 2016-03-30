@@ -1,0 +1,32 @@
+// [START declaration]
+syntax = "proto3";
+package proto;
+// [END declaration]
+
+// [START java_declaration]
+option java_package = "org.tont.proto";
+option java_outer_classname = "ServerReport";
+// [END java_declaration]
+
+// [START csharp_declaration]
+option csharp_namespace = "Google.Protobuf.ToNT.ServerReport";
+// [END csharp_declaration]
+
+// [START messages code 100]
+message ServerReportEntity {
+	int32 cpuCount = 1;
+	int32 cpuRatio = 2;
+	int64 memoryFree = 3;
+	int64 memoryTotal = 4;
+	string osName = 5;
+	string ipAddr = 6;
+	string javaVersion =7;
+	int64 startTime =8;
+	
+	int64 handleTotalNum = 9;
+	int64 handleSpeedNow = 10;
+	int64 loginNum = 11;
+	
+	int64 updateTime = 18;
+}
+// [END messages]

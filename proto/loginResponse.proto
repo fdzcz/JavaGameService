@@ -1,0 +1,26 @@
+// [START declaration]
+syntax = "proto3";
+package proto;
+// [END declaration]
+
+// [START java_declaration]
+option java_package = "org.tont.proto";
+option java_outer_classname = "LoginResponse";
+// [END java_declaration]
+
+// [START csharp_declaration]
+option csharp_namespace = "Google.Protobuf.ToNT.LoginResponse";
+// [END csharp_declaration]
+
+// [START messages code 100]
+message LoginResponseEntity {
+	string token = 1;
+	string nickname = 2;
+	bool isnamed = 3;
+	int32 gold = 4;
+	int32 curScene = 5;
+	int32 curPosX = 6;
+	int32 curPosY = 7;
+	int32 hp = 8;
+}
+// [END messages]

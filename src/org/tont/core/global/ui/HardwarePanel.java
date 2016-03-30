@@ -4,14 +4,20 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.JPanel;
+
+import org.tont.proto.ServerReport;
 
 public class HardwarePanel extends JPanel {
 
 	private static final long serialVersionUID = 2329271184658064412L;
-	private JPanel info;
-	private JPanel logger;
+	private HardwareInfoChildPanel info;
+	private LogChildPanel logger;
+	
+	private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 	public HardwarePanel() {
 		
@@ -44,5 +50,17 @@ public class HardwarePanel extends JPanel {
             constraints.gridy = 1;
             add(logger, constraints);
         }
+	}
+	
+	public void notice(ServerReport.ServerReportEntity report) {
+		info.cpuCount.setText(report.getCpuCount()+"");
+		info.cpuRatio.setText(report.getCpuRatio()+"");
+		info.memoryFree.setText(report.getMemoryFree()+"");
+		info.memoryTotal.setText(report.getMemoryTotal()+"");
+		info.os.setText(report.getOsName());
+		info.ip.setText(report.getIpAddr());
+		info.version.setText(report.getJavaVersion());
+		info.startTime.setText(format.format(new Date(report.getStartTime())));
+		info.updateTime.setText(format.format(new Date(report.getUpdateTime())));
 	}
 }

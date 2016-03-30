@@ -9,10 +9,11 @@ import org.tont.core.netty.ServerChannelManager;
 import org.tont.core.session.SessionEntity;
 import org.tont.core.session.SessionPoolImp;
 import org.tont.proto.GameMsgEntity;
+import org.tont.util.ConstantUtil;
 
 public class GatewayDispatchHandler extends ChannelInboundHandlerAdapter {
 	
-	private final String CLOSE = "";
+	private final String CLOSE = ConstantUtil.CLOSE;
 	private final String MARKET = "MarketServerChannel";
 	private SessionPoolImp sessionPool;
 	

@@ -5,10 +5,11 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 
 import org.tont.core.netty.NettyServer;
 import org.tont.proto.GameMsgEntity;
+import org.tont.util.ConstantUtil;
 
 public class MarketServerHandler extends ChannelInboundHandlerAdapter {
 	
-	private final String CLOSE = "";
+	private final String CLOSE = ConstantUtil.CLOSE;
 	
 	@Override
 	public void channelActive(ChannelHandlerContext ctx) throws Exception {

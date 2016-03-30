@@ -1,21 +1,51 @@
 package org.tont.core.netty.global;
 
+import io.netty.channel.ChannelHandler.Sharable;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 
+import org.tont.core.global.ui.GlobalMonitorFrame;
+import org.tont.proto.GameMsgEntity;
+import org.tont.proto.ServerReport;
+import org.tont.util.ConstantUtil;
+
+@Sharable
 public class GlobalServerHandler extends ChannelInboundHandlerAdapter {
 	
-	private final String CLOSE = "";
+	private final String GATEWAY = "GatewayServerChannel";
+	private final String MARKET = "MarketServerChannel";
+	private final String BATTLE = "BattleServerChannel";
+	private final String SCENE = "SceneServerChannel";
+	private final String CLOSE = ConstantUtil.CLOSE;
+	
+	private GlobalMonitorFrame frame;
+	
+	public GlobalServerHandler(GlobalMonitorFrame frame) {
+		this.frame = frame;
+	}
 
 	@Override
 	public void channelActive(ChannelHandlerContext ctx) throws Exception {
-		
 	}
 
 	@Override
 	public void channelRead(ChannelHandlerContext ctx, Object msg)
 			throws Exception {
-		//GameMsgEntity msgEntity = (GameMsgEntity) msg;
+		GameMsgEntity msgEntity = (GameMsgEntity) msg;
+		ServerReport.ServerReportEntity entity = ServerReport.ServerReportEntity.parseFrom(msgEntity.getData());
+		
+		switch (msgEntity.getMsgCode()) {
+			case 86:
+				frame.noticeGatewayPanel(ctx.channel().remoteAddress(), entity);
+				break;
+				
+			case 87:
+				frame.noticeMarketPanel(ctx.channel().remoteAddress(), entity);
+				break;
+	
+			default:
+				break;
+		};
 	}
 
 	@Override

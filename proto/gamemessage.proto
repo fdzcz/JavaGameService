@@ -1,0 +1,32 @@
+// [START declaration]
+syntax = "proto3";
+package proto;
+// [END declaration]
+
+// [START java_declaration]
+option java_package = "org.tont.proto";
+option java_outer_classname = "GameMessage";
+// [END java_declaration]
+
+// [START csharp_declaration]
+option csharp_namespace = "Google.Protobuf.ToNT.GameMessage";
+// [END csharp_declaration]
+
+
+// [START messages]
+message PlayerRequest {
+	int32 msg_code = 1;
+	
+	message PlayerAccountInfo {
+		int32 player_id = 1;
+		string token  = 2;
+		string player_account = 3;
+		string player_password = 4;
+	}
+
+	message PlayerGameInfo {
+		int32 player_nickname = 1;
+		int32 player_level = 2;
+	}
+}
+// [END messages]

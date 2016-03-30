@@ -23,6 +23,7 @@ public class NettyServer implements Runnable {
 	private static ServerInfoGatherer gatherer;
 	private EventLoopGroup bossGroup;
 	private EventLoopGroup workerGroup;
+	private long startTime;
 	
 	{
 		if (gatherer == null) {
@@ -72,11 +73,21 @@ public class NettyServer implements Runnable {
 	@Override
 	public void run() {
 		try {
+			startTime = System.currentTimeMillis();
 			gatherer.startDataAnalyse();
 			this.bind(initializer);
 		} catch (InterruptedException e) {
 			
 		}
+	}
+	
+	//setter and getter
+	public long getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(long startTime) {
+		this.startTime = startTime;
 	}
 
 }

@@ -1,0 +1,22 @@
+// [START declaration]
+syntax = "proto3";
+package proto;
+// [END declaration]
+
+// [START java_declaration]
+option java_package = "org.tont.proto";
+option java_outer_classname = "LoginRequest";
+// [END java_declaration]
+
+// [START csharp_declaration]
+option csharp_namespace = "Google.Protobuf.ToNT.LoginRequest";
+// [END csharp_declaration]
+
+// [START messages code 100]
+message LoginRequestEntity {
+	int32 pid = 1;
+	string account = 2;
+	string password = 3;
+	string deviceid = 4;
+}
+// [END messages]

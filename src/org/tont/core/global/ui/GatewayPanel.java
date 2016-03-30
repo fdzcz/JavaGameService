@@ -7,6 +7,8 @@ import java.awt.Insets;
 
 import javax.swing.JPanel;
 
+import org.tont.proto.ServerReport;
+
 public class GatewayPanel extends JPanel {
 
 	private static final long serialVersionUID = 18828486362329417L;
@@ -48,6 +50,11 @@ public class GatewayPanel extends JPanel {
             constraints.gridwidth = 1;
             add(businessPanel, constraints);
         }
+	}
+	
+	public void notice(ServerReport.ServerReportEntity report) {
+		hardwarePanel.notice(report);
+		businessPanel.notice(report);
 	}
 
 }
