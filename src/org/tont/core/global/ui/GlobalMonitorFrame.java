@@ -47,6 +47,13 @@ public class GlobalMonitorFrame extends JFrame {
 		this.startListener();
 	}
 	
+	public void removeDisconnectPanel(SocketAddress addr) {
+		if (pannelMap.get(addr) != null) {
+			tabbed.remove(pannelMap.get(addr));
+			pannelMap.remove(addr);
+		}
+	}
+	
 	public void noticeGatewayPanel(SocketAddress addr, ServerReport.ServerReportEntity report) {
 		if (pannelMap.get(addr) == null) {
 			JPanel pannel = new GatewayPanel();

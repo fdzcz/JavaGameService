@@ -12,10 +12,10 @@ import org.tont.util.ConstantUtil;
 @Sharable
 public class GlobalServerHandler extends ChannelInboundHandlerAdapter {
 	
-	private final String GATEWAY = "GatewayServerChannel";
-	private final String MARKET = "MarketServerChannel";
-	private final String BATTLE = "BattleServerChannel";
-	private final String SCENE = "SceneServerChannel";
+	public final String GATEWAY = "GatewayServerChannel";
+	public final String MARKET = "MarketServerChannel";
+	public final String BATTLE = "BattleServerChannel";
+	public final String SCENE = "SceneServerChannel";
 	private final String CLOSE = ConstantUtil.CLOSE;
 	
 	private GlobalMonitorFrame frame;
@@ -46,6 +46,12 @@ public class GlobalServerHandler extends ChannelInboundHandlerAdapter {
 			default:
 				break;
 		};
+	}
+	
+	@Override
+	public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+		super.channelInactive(ctx);
+		frame.removeDisconnectPanel(ctx.channel().remoteAddress());
 	}
 
 	@Override

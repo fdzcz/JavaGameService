@@ -4,7 +4,6 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.text.SimpleDateFormat;
 
 import javax.swing.JPanel;
 
@@ -13,10 +12,10 @@ import org.tont.proto.ServerReport;
 public class BusinessPanel extends JPanel{
 	
 	private static final long serialVersionUID = 2889439458303943304L;
-	private JPanel info;
-	private JPanel logger;
+	private BusinessInfoChildPanel info;
+	private LogChildPanel logger;
 	
-	private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	//private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 	public BusinessPanel() {
 		
@@ -52,6 +51,9 @@ public class BusinessPanel extends JPanel{
 	}
 	
 	public void notice(ServerReport.ServerReportEntity report) {
-		
+		info.handleTotalNum.setText(report.getHandleTotalNum()+"");
+		info.handleSpeed.setText(report.getHandleSpeedNow()+"");
+		info.loginNum.setText(report.getLoginNum()+"");
+		info.handleTotalNum.setText(report.getHandleTotalNum()+"");
 	}
 }

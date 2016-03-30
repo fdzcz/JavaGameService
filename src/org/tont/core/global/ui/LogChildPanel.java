@@ -9,11 +9,14 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.SwingUtilities;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 public class LogChildPanel extends JPanel {
 
 	private static final long serialVersionUID = -1014849886128696564L;
-	private JTextArea logWin;
+	public JTextArea logWin;
 
 	public LogChildPanel(String title) {
 		GridBagLayout bagLayout = new GridBagLayout();
@@ -25,8 +28,41 @@ public class LogChildPanel extends JPanel {
 		logWin.setLineWrap(true);
 		logWin.setEditable(false);
 		logWin.setText("日志窗口初始化完成\n");
+		logWin.getDocument().addDocumentListener(new DocumentListener(){
+
+			@Override
+			public void changedUpdate(DocumentEvent e) {
+			// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void insertUpdate(DocumentEvent e) {
+				SwingUtilities.invokeLater(new Runnable() {
+					
+					@Override
+					public void run() {
+						if (logWin.getLineCount() >= 10) {
+					        int end = 0;
+					        try {
+					        	end = logWin.getLineEndOffset(5);
+					        } catch (Exception e1) {
+					        }
+					        logWin.replaceRange("", 0, end);
+						}
+					}
+				});
+				
+				logWin.setCaretPosition(logWin.getText().length());
+			}
+
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+			// TODO Auto-generated method stub
+			}
+			});
 		this.setBorder(BorderFactory.createTitledBorder(title));
 		JScrollPane scroll = new JScrollPane(logWin);
+		
 		
 		GridBagConstraints constraints = new GridBagConstraints();
 		constraints.fill = GridBagConstraints.BOTH;
@@ -37,4 +73,6 @@ public class LogChildPanel extends JPanel {
         constraints.weighty = 1;
 		add(scroll, constraints);
 	}
+	
+	
 }

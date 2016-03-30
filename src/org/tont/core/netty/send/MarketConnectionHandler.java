@@ -7,6 +7,9 @@ import org.tont.core.netty.ServerChannelManager;
 import org.tont.core.netty.gateway.Gateway;
 import org.tont.proto.GameMsgEntity;
 
+import io.netty.channel.ChannelHandler.Sharable;
+
+@Sharable
 public class MarketConnectionHandler extends ChannelInboundHandlerAdapter {
 	
 	@Override

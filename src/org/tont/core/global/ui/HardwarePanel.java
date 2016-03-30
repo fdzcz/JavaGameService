@@ -53,8 +53,9 @@ public class HardwarePanel extends JPanel {
 	}
 	
 	public void notice(ServerReport.ServerReportEntity report) {
+		String usedMemoryMB = (report.getMemoryTotal()-report.getMemoryFree())/1024/1024+"";
 		info.cpuCount.setText(report.getCpuCount()+"");
-		info.cpuRatio.setText(report.getCpuRatio()+"");
+		info.cpuRatio.setText(report.getCpuRatio()+"%");
 		info.memoryFree.setText(report.getMemoryFree()+"");
 		info.memoryTotal.setText(report.getMemoryTotal()+"");
 		info.os.setText(report.getOsName());
@@ -62,5 +63,11 @@ public class HardwarePanel extends JPanel {
 		info.version.setText(report.getJavaVersion());
 		info.startTime.setText(format.format(new Date(report.getStartTime())));
 		info.updateTime.setText(format.format(new Date(report.getUpdateTime())));
+		
+		logger.logWin.append(format.format(new Date()) 
+				+ "   CPU: " + report.getCpuRatio() 
+				+ "% , Memory: " + usedMemoryMB + " MB" 
+				+ "/" + report.getMemoryTotal()/1024/1024 + " MB"
+				+ "\n");
 	}
 }

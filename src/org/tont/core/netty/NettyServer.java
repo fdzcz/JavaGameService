@@ -23,13 +23,7 @@ public class NettyServer implements Runnable {
 	private static ServerInfoGatherer gatherer;
 	private EventLoopGroup bossGroup;
 	private EventLoopGroup workerGroup;
-	private long startTime;
-	
-	{
-		if (gatherer == null) {
-			gatherer = new ServerInfoGatherer();
-		}
-	}
+	protected long startTime;
 	
 	public NettyServer(String configPath, ChannelInitializer<SocketChannel> initializer) throws ConfigParseException {
 		config = new Configuration(configPath);
@@ -38,6 +32,9 @@ public class NettyServer implements Runnable {
 	}
 	
 	public static ServerInfoGatherer Gatherer() {
+		if (gatherer == null) {
+			gatherer = new ServerInfoGatherer();
+		}
 		return gatherer;
 	}
 	
@@ -74,7 +71,7 @@ public class NettyServer implements Runnable {
 	public void run() {
 		try {
 			startTime = System.currentTimeMillis();
-			gatherer.startDataAnalyse();
+			NettyServer.Gatherer().startDataAnalyse();
 			this.bind(initializer);
 		} catch (InterruptedException e) {
 			

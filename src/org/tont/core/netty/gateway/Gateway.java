@@ -1,6 +1,5 @@
 package org.tont.core.netty.gateway;
 
-import org.tont.core.ServerInfoGatherer;
 import org.tont.core.disruptor.MessageDispatcher;
 import org.tont.core.gateway.GatewayGatherer;
 import org.tont.core.netty.NettyServer;
@@ -13,7 +12,7 @@ public class Gateway extends NettyServer{
 	
 	private static SessionPoolImp sessionPool = new SessionPoolImp();
 	private static GatewayGatherer gatherer = new GatewayGatherer();
-	private static MessageDispatcher dispatcher = new MessageDispatcher(4096, new SleepingWaitStrategy());	//´¦Àí×¢²áµÇÂ¼ÏûÏ¢µÄ¶ÓÁĞ
+	private static MessageDispatcher dispatcher = new MessageDispatcher(4096, new SleepingWaitStrategy());	//MessageDispatcherè´Ÿè´£åˆ†å‘ç™»å½•æ³¨å†Œæ¶ˆæ¯è‡³å¤„ç†é˜Ÿåˆ—
 	
 	public Gateway(String contextPath) throws ConfigParseException {
 		super(contextPath, new GatewayChannelInitializer(new GatewayDispatchHandler(sessionPool)));
@@ -23,12 +22,23 @@ public class Gateway extends NettyServer{
 		return sessionPool;
 	}
 	
-	public static ServerInfoGatherer Gatherer() {
+	public static GatewayGatherer Gatherer() {
 		return gatherer;
 	}
 	
 	public static MessageDispatcher Dispatcher() {
 		return dispatcher;
+	}
+	
+	@Override
+	public void run() {
+		try {
+			startTime = System.currentTimeMillis();
+			Gateway.Gatherer().startDataAnalyse();
+			this.bind(initializer);
+		} catch (InterruptedException e) {
+			
+		}
 	}
 	
 }
